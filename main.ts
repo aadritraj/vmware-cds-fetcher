@@ -1,7 +1,8 @@
 import * as cheerio from "cheerio";
 
+// the cds was changed from softweareupdate.vmware.com to whatever this is
 const getLatestRelease = async (): Promise<string> => {
-  const baseUrl = "https://softwareupdate.vmware.com/cds/vmw-desktop/ws/";
+  const baseUrl = "https://softwareupdate-dev.broadcom.com/cds/vmw-desktop/ws/";
 
   const response = await fetch(baseUrl);
   if (response.status !== 200) {
@@ -30,7 +31,7 @@ const getLatestRelease = async (): Promise<string> => {
 
 const getWindowsBundle = async (version: string): Promise<string> => {
   const url =
-    `https://softwareupdate.vmware.com/cds/vmw-desktop/ws/${version}/`;
+    `https://softwareupdate-dev.broadcom.com/cds/vmw-desktop/ws/${version}/`;
   const response = await fetch(url);
   if (response.status !== 200) {
     throw new Error(`Failed to fetch data for version ${version}`);
